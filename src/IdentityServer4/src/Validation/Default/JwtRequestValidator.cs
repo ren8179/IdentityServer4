@@ -175,11 +175,6 @@ namespace IdentityServer4.Validation
                 RequireExpirationTime = true
             };
 
-            if (Options.StrictJarValidation)
-            {
-                tokenValidationParameters.ValidTypes = new[] { JwtClaimTypes.JwtTypes.AuthorizationRequest };
-            }
-
             Handler.ValidateToken(jwtTokenString, tokenValidationParameters, out var token);
             
             return Task.FromResult((JwtSecurityToken)token);
